@@ -39,7 +39,7 @@ public class MeepMeepTesting {
 
 
                                 .back(21)
-                                .turn(Math.toRadians(-135))
+                                .turn(Math.toRadians(45))
                                 .forward(0.5)
                                 .waitSeconds(1)
                                 .addTemporalMarker(4.37, () ->{
@@ -51,7 +51,7 @@ public class MeepMeepTesting {
                                 .addDisplacementMarker(() -> {
                                     //slideTo(slideInitial + 600, 0.7);
                                 })
-                                .turn(Math.toRadians(135))
+                                .turn(Math.toRadians(-45))
                                 .forward(21)
                                 .waitSeconds(1)
                                 .addTemporalMarker(8.83, () -> {
@@ -60,7 +60,7 @@ public class MeepMeepTesting {
 
 
                                 .back(21)
-                                .turn(Math.toRadians(-135))
+                                .turn(Math.toRadians(135))
                                 .forward(0.5)
                                 .waitSeconds(1)
                                 .addTemporalMarker(4.37, () ->{

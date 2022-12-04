@@ -128,7 +128,7 @@ public class RoadRunnerAutonomous extends LinearOpMode
                 .build();
 
 
-        TrajectorySequence trajToJunction = drive.trajectorySequenceBuilder(trajToStack.end())
+        TrajectorySequence trajToJunctionHigh = drive.trajectorySequenceBuilder(trajToStack.end())
                 .back(21)
                 .turn(Math.toRadians(-135))
                 .forward(0.5)
@@ -137,6 +137,29 @@ public class RoadRunnerAutonomous extends LinearOpMode
 //                    claw.setPosition(0.5);
 //                })
                 .build();
+
+        TrajectorySequence trajToJunctionLow = drive.trajectorySequenceBuilder(trajToStack.end())
+                .back(21)
+                .turn(Math.toRadians(45))
+                .forward(0.5)
+                .waitSeconds(1)
+//                .addTemporalMarker(4.37, () ->{
+//                    //claw.setPosition(0.5)
+//                })
+                .build();
+
+        TrajectorySequence trajToJunctionMedium = drive.trajectorySequenceBuilder(trajToStack.end())
+                .back(21)
+                .turn(Math.toRadians(135))
+                .forward(0.5)
+                .waitSeconds(1)
+//                .addTemporalMarker(4.37, () ->{
+//                    //claw.setPosition(0.5)
+//                })
+                .build();
+
+
+
 
 
 
@@ -266,7 +289,7 @@ public class RoadRunnerAutonomous extends LinearOpMode
             sleep(1000);
             slideTo(slideInitial + SL_LOW - 200, 0.7);
             sleep(200);
-            drive.followTrajectorySequence(trajToJunction);
+            drive.followTrajectorySequence(trajToJunctionHigh);
             claw.setPosition(0.5);
             sleep(500);
             drive.followTrajectorySequence(trajToStack);
@@ -274,7 +297,7 @@ public class RoadRunnerAutonomous extends LinearOpMode
             sleep(1000);
             slideTo(slideInitial + SL_LOW - 200, 0.7);
             sleep(500);
-            drive.followTrajectorySequence(trajToJunction);
+            drive.followTrajectorySequence(trajToJunctionHigh);
             claw.setPosition(0.5);
 
 

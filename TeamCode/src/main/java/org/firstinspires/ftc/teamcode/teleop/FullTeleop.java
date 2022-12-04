@@ -83,6 +83,19 @@ public class FullTeleop extends LinearOpMode {
             rightFront.setPower(vertical - horizontal - turn);
             rightBack.setPower(vertical + horizontal - turn);
 
+            if ((gamepad1.right_bumper)) {
+                rightFront.setPower(0.6);
+                leftBack.setPower(0.6);
+                leftFront.setPower(-0.6);
+                rightBack.setPower(-0.6);
+            }
+            else if ((gamepad1.left_bumper)) {
+                rightFront.setPower(-0.6);
+                leftBack.setPower(-0.6);
+                leftFront.setPower(0.6);
+                rightBack.setPower(0.6);
+            }
+
             if (gamepad2.a) {
                 if (releasedA2) {
                     slide.setTargetPosition(slideInitial);
@@ -154,7 +167,6 @@ public class FullTeleop extends LinearOpMode {
             } else {
                 claw.setPosition(0.5);
             }
-
 
         }
 

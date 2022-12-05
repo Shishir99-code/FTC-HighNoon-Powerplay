@@ -105,7 +105,7 @@ public class RoadRunnerAutonomous extends LinearOpMode
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial + SL_HIGH, 0.7);
                 })
-                .forward(46)
+                .forward(44)
                 .turn(Math.toRadians(-45))
                 .forward(0.5)
                 .waitSeconds(1)

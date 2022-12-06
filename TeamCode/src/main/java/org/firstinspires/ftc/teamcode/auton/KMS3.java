@@ -21,13 +21,11 @@
 
 package org.firstinspires.ftc.teamcode.auton;
 
-import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -41,7 +39,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import java.util.ArrayList;
 
 @Autonomous
-public class RoadRunnerAutonomous extends LinearOpMode
+public class KMS3 extends LinearOpMode
 {
     OpenCvCamera camera;
     AprilTagDetectionPipeline aprilTagDetectionPipeline;
@@ -97,75 +95,74 @@ public class RoadRunnerAutonomous extends LinearOpMode
 
         claw = hardwareMap.get(Servo.class, "claw");
 
-        Pose2d startPose = new Pose2d(36,58.5,Math.toRadians(270));
+        Pose2d startPose = new Pose2d(36,61.2,Math.toRadians(270));
 
         drive.setPoseEstimate(startPose);
 
-        TrajectorySequence trajblueleft = drive.trajectorySequenceBuilder(startPose)
+        TrajectorySequence RightTrajectory = drive.trajectorySequenceBuilder(startPose)
                 .addDisplacementMarker(() -> {
-                    slideTo(slideInitial + SL_HIGH, 0.7);
+                    //slideTo(slideInitial + SL_HIGH, 7);
                 })
-                .forward(42)
-                .turn(Math.toRadians(-45))
-                .forward(0.5)
+                .strafeLeft(24)
+                .forward(49)
+                .strafeRight(12)
                 .waitSeconds(1)
-//                .addTemporalMarker(4.37, () ->{
-//                    claw.setPosition(0.5);
-//                })
-                .build();
-
-
-        TrajectorySequence trajToStack = drive.trajectorySequenceBuilder(trajblueleft.end())
-                .back(0.5)
+                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
+                    // claw.setPosition(0.5)
+                })
                 .addDisplacementMarker(() -> {
-                    slideTo(slideInitial + 600, 0.7);
+                    //slideTo(slideInitial + 600, 0.7);
                 })
-                .turn(Math.toRadians(135))
-                .forward(22)
-                .waitSeconds(1)
-//                .addTemporalMarker(8.83, () -> {
-//                    claw.setPosition(1);
-//                })
-                .build();
-
-
-        TrajectorySequence trajToJunctionHigh = drive.trajectorySequenceBuilder(trajToStack.end())
+                .lineToSplineHeading(new Pose2d(-55, 12.2, Math.toRadians(180)))
+                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
+                    //claw.setPosition(1)
+                })
+                .waitSeconds(0.5)
                 .addDisplacementMarker(() -> {
-                    slideTo(slideInitial + SL_HIGH, 0.7);
+                    //slideTo(Sl_HIGH, 0.7);
                 })
-                .back(21)
-                .turn(Math.toRadians(-135))
-                .forward(0.5)
+                .lineToSplineHeading(new Pose2d(-24, 12.2, Math.toRadians(270)))
                 .waitSeconds(1)
-//                .addTemporalMarker(4.37, () ->{
-//                    claw.setPosition(0.5);
-//                })
-                .build();
-
-        TrajectorySequence trajToJunctionLow = drive.trajectorySequenceBuilder(trajToStack.end())
-                .back(21)
-                .turn(Math.toRadians(45))
-                .forward(0.5)
+                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
+                    //claw.setPosition(0.5)
+                })
+                .addDisplacementMarker(() -> {
+                    //slideTo(slideInitial + 500, 0.7);
+                })
+                .lineToSplineHeading(new Pose2d(-55, 12.2, Math.toRadians(180)))
+                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
+                    //claw.setPosition(1)
+                })
+                .waitSeconds(0.5)
+                .addDisplacementMarker(() -> {
+                    //slideTo(Sl_HIGH, 0.7);
+                })
+                .lineToSplineHeading(new Pose2d(-24, 12.2, Math.toRadians(270)))
                 .waitSeconds(1)
-//                .addTemporalMarker(4.37, () ->{
-//                    //claw.setPosition(0.5)
-//                })
-                .build();
-
-        TrajectorySequence trajToJunctionMedium = drive.trajectorySequenceBuilder(trajToStack.end())
-                .back(21)
-                .turn(Math.toRadians(135))
-                .forward(0.5)
+                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
+                    //claw.setPosition(0.5)
+                })
+                .addDisplacementMarker(() -> {
+                    //slideTo(slideInitial + 350, 0.7);
+                })
+                .lineToSplineHeading(new Pose2d(-55, 12.2, Math.toRadians(180)))
+                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
+                    //claw.setPosition(1)
+                })
+                .waitSeconds(0.5)
+                .addDisplacementMarker(() -> {
+                    //slideTo(Sl_HIGH, 0.7);
+                })
+                .lineToSplineHeading(new Pose2d(-24, 12.2, Math.toRadians(270)))
                 .waitSeconds(1)
-//                .addTemporalMarker(4.37, () ->{
-//                    //claw.setPosition(0.5)
-//                })
+                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
+                    //claw.setPosition(0.5)
+                })
+                .addDisplacementMarker(() -> {
+                    //slideTo(slideInitial + 4, 0.7);
+                })
+                .strafeRight(12)
                 .build();
-
-
-
-
-
 
 
 
@@ -283,33 +280,7 @@ public class RoadRunnerAutonomous extends LinearOpMode
         }else if(tagOfInterest.id == MIDDLE){
 
 
-            claw.setPosition(1);
-            sleep(1000);
-            drive.followTrajectorySequence(trajblueleft);
-            claw.setPosition(0.5);
-            sleep(500);
-            drive.followTrajectorySequence(trajToStack);
-            claw.setPosition(1);
-            sleep(1000);
-            slideTo(slideInitial + SL_LOW - 200, 0.7);
-            sleep(200);
-            drive.followTrajectorySequence(trajToJunctionHigh);
-            sleep(500);
-            claw.setPosition(0.5);
-            sleep(500);
-            drive.followTrajectorySequence(trajToStack);
-            claw.setPosition(1);
-            sleep(1000);
-            slideTo(slideInitial + SL_LOW - 200, 0.7);
-            sleep(500);
-            drive.followTrajectorySequence(trajToJunctionHigh);
-            claw.setPosition(0.5);
-
-
         }else if (tagOfInterest.id == RIGHT){
-
-            claw.setPosition(1);
-            sleep(1000);
 
 
         }

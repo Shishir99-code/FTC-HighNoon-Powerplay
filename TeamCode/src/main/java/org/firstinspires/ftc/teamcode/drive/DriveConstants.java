@@ -68,7 +68,7 @@ public class DriveConstants {
      */
     /*
      * Note from LearnRoadRunner.com:
-     * The velocity and acceleration constraints were calculated based on the following equation:
+     * The velocity vza4and acceleration constraints were calculated based on the following equation:
      * ((MAX_RPM / 60) * GEAR_RATIO * WHEEL_RADIUS * 2 * Math.PI) * 0.85
      * Resulting in 54.7533784627836 in/s.
      * This is only 85% of the theoretical maximum velocity of the bot, following the recommendation above.

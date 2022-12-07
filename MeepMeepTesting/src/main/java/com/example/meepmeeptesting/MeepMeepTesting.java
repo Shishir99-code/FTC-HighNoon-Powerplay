@@ -19,62 +19,88 @@ public class MeepMeepTesting {
                                     //slideTo(slideInitial + SL_HIGH, 7);
                                 })
                                 .strafeLeft(24)
-                                .forward(49)
+                                .forward(47)
                                 .strafeRight(12)
+                                .forward(1)
                                 .waitSeconds(1)
                                 .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                                    // claw.setPosition(0.5)
+                                    //claw.setPosition(0.5);
                                 })
+                                .back(1)
                                 .addDisplacementMarker(() -> {
-                                    //slideTo(slideInitial + 600, 0.7);
+                                    //slideTo(slideInitial + 600, 1);
                                 })
-                                .lineToSplineHeading(new Pose2d(-55, 12.2, Math.toRadians(180)))
+                                .lineToSplineHeading(new Pose2d(-55, 14.2, Math.toRadians(180)))
                                 .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                                    //claw.setPosition(1)
+                                    //claw.setPosition(1);
                                 })
                                 .waitSeconds(0.5)
                                 .addDisplacementMarker(() -> {
-                                    //slideTo(Sl_HIGH, 0.7);
+                                    //slideTo(slideInitial+ SL_HIGH, 1);
                                 })
-                                .lineToSplineHeading(new Pose2d(-24, 12.2, Math.toRadians(270)))
+                                .lineToSplineHeading(new Pose2d(-24, 14.2, Math.toRadians(270)))
+                                .forward(1)
                                 .waitSeconds(1)
                                 .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                                    //claw.setPosition(0.5)
+                                    //claw.setPosition(0.5);
                                 })
+                                .back(1)
                                 .addDisplacementMarker(() -> {
-                                    //slideTo(slideInitial + 500, 0.7);
+                                    //slideTo(slideInitial + 500, 1);
                                 })
-                                .lineToSplineHeading(new Pose2d(-55, 12.2, Math.toRadians(180)))
+                                .lineToSplineHeading(new Pose2d(-55, 14.2, Math.toRadians(180)))
                                 .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                                    //claw.setPosition(1)
+                                    //claw.setPosition(1);
                                 })
                                 .waitSeconds(0.5)
                                 .addDisplacementMarker(() -> {
-                                    //slideTo(Sl_HIGH, 0.7);
+                                    //slideTo(slideInitial+ SL_HIGH, 1);
                                 })
-                                .lineToSplineHeading(new Pose2d(-24, 12.2, Math.toRadians(270)))
+                                .lineToSplineHeading(new Pose2d(-24, 14.2, Math.toRadians(270)))
+                                .forward(1)
                                 .waitSeconds(1)
                                 .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                                    //claw.setPosition(0.5)
+                                    //claw.setPosition(0.5);
                                 })
+                                .back(1)
                                 .addDisplacementMarker(() -> {
-                                    //slideTo(slideInitial + 350, 0.7);
+                                    //slideTo(slideInitial + 350, 1);
                                 })
-                                .lineToSplineHeading(new Pose2d(-55, 12.2, Math.toRadians(180)))
+                                .lineToSplineHeading(new Pose2d(-55, 14.2, Math.toRadians(180)))
                                 .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                                    //claw.setPosition(1)
+                                    //claw.setPosition(1);
                                 })
                                 .waitSeconds(0.5)
                                 .addDisplacementMarker(() -> {
-                                    //slideTo(Sl_HIGH, 0.7);
+                                    //slideTo(slideInitial+ SL_HIGH, 1);
                                 })
-                                .lineToSplineHeading(new Pose2d(-24, 12.2, Math.toRadians(270)))
+                                .lineToSplineHeading(new Pose2d(-24, 14.2, Math.toRadians(270)))
+                                .forward(1)
                                 .waitSeconds(1)
                                 .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                                    //claw.setPosition(0.5)
+                                    //claw.setPosition(0.5);
                                 })
+                                .back(1)
                                 .addDisplacementMarker(() -> {
-                                    //slideTo(slideInitial + 4, 0.7);
+                                    //slideTo(slideInitial + 250, 1);
+                                })
+                                .lineToSplineHeading(new Pose2d(-55, 14.2, Math.toRadians(180)))
+                                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
+                                    //claw.setPosition(1);
+                                })
+                                .waitSeconds(0.5)
+                                .addDisplacementMarker(() -> {
+                                    //slideTo(slideInitial+ SL_HIGH, 1);
+                                })
+                                .lineToSplineHeading(new Pose2d(-24, 14.2, Math.toRadians(270)))
+                                .forward(1)
+                                .waitSeconds(1)
+                                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
+                                    //claw.setPosition(0.5);
+                                })
+                                .back(1)
+                                .addDisplacementMarker(() -> {
+                                    //slideTo(slideInitial + 4, 1);
                                 })
                                 .strafeRight(12)
                                 .build()

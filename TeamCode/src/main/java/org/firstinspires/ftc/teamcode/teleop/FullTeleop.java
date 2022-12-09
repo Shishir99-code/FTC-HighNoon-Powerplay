@@ -59,9 +59,9 @@ public class FullTeleop extends LinearOpMode {
 
         claw = hardwareMap.get(Servo.class, "claw");
 
-        int SL_LOW = 1600;
-        int SL_MEDIUM = 2450;
-        int SL_HIGH = 3300;
+        int SL_LOW = 600;
+        int SL_MEDIUM = 1450;
+        int SL_HIGH = 2280;
 
         // Gamepad 2
         boolean releasedA2 = true, releasedB2 = true, releasedX2 = true, releasedY2 = true;
@@ -85,10 +85,10 @@ public class FullTeleop extends LinearOpMode {
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
 
-            leftFront.setPower(frontLeftPower);
-            leftBack.setPower(backLeftPower);
-            rightFront.setPower(frontRightPower);
-            rightBack.setPower(backRightPower);
+            leftFront.setPower(frontLeftPower * 0.7);
+            leftBack.setPower(backLeftPower * 0.7);
+            rightFront.setPower(frontRightPower * 0.7);
+            rightBack.setPower(backRightPower * 0.7);
 
             if ((gamepad1.right_bumper)) {
                 rightFront.setPower(1);
@@ -107,7 +107,7 @@ public class FullTeleop extends LinearOpMode {
                 if (releasedA2) {
                     slide.setTargetPosition(slideInitial);
                     slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    slide.setPower(1);
+                    slide.setPower(0.8);
                     releasedA2 = false;
                 }
             } else if (!releasedA2) {
@@ -118,7 +118,7 @@ public class FullTeleop extends LinearOpMode {
                 if (releasedB2) {
                     slide.setTargetPosition(slideInitial + SL_LOW);
                     slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    slide.setPower(-1);
+                    slide.setPower(-0.8);
                     releasedB2 = false;
                 }
             } else if (!releasedB2) {
@@ -129,7 +129,7 @@ public class FullTeleop extends LinearOpMode {
                 if (releasedX2) {
                     slide.setTargetPosition(slideInitial + SL_MEDIUM);
                     slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    slide.setPower(1);
+                    slide.setPower(0.8);
                     releasedX2 = false;
                 }
             } else if (!releasedX2) {
@@ -140,7 +140,7 @@ public class FullTeleop extends LinearOpMode {
                 if (releasedY2) {
                     slide.setTargetPosition(slideInitial + SL_HIGH);
                     slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    slide.setPower(1);
+                    slide.setPower(0.8);
                     releasedY2 = false;
                 }
             } else if (!releasedY2) {
@@ -170,9 +170,9 @@ public class FullTeleop extends LinearOpMode {
             }
 
             if ((gamepad2.right_bumper)) {
-                claw.setPosition(1);
+                claw.setPosition(0.8);
             } else {
-                claw.setPosition(0.5);
+                claw.setPosition(0.2);
             }
 
         }

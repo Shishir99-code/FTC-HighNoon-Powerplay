@@ -87,9 +87,9 @@ public class KMS3 extends LinearOpMode
         slide.setTargetPosition(slideInitial);
         slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        int SL_LOW = 1600;
-        int SL_MEDIUM = 2450;
-        int SL_HIGH = 3300;
+        int SL_LOW = 1400;
+        int SL_MEDIUM = 2250;
+        int SL_HIGH = 3100;
 
         double strafeAdditive = 12;
 

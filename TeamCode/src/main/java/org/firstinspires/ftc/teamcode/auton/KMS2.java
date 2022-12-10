@@ -93,7 +93,7 @@ public class KMS2 extends LinearOpMode
 
         claw = hardwareMap.get(Servo.class, "claw");
 
-        Pose2d startPose = new Pose2d(36,61.2,Math.toRadians(270));
+        Pose2d startPose = new Pose2d(-36,61.2,Math.toRadians(270));
 
         drive.setPoseEstimate(startPose);
 
@@ -101,69 +101,78 @@ public class KMS2 extends LinearOpMode
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial + SL_HIGH, .7);
                 })
-                .strafeLeft(24)
-                .forward(47)
-                .strafeRight(12)
-                .forward(1)
-                .waitSeconds(1)
-                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                    claw.setPosition(0.5);
+                .forward(49)
+                .strafeLeft(16)
+                .forward(2.5)
+                .waitSeconds(0.4)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.2);
                 })
-                .back(1)
+                .waitSeconds(.1)
+                .back(2.5)
                 .addDisplacementMarker(() -> {
-                    slideTo(slideInitial + 600, .7);
+                    slideTo(slideInitial + 400, .7);
                 })
-                .lineToSplineHeading(new Pose2d(-55, 14.2, Math.toRadians(180)))
-                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
+                .lineToSplineHeading(new Pose2d(-54, 12.2, Math.toRadians(180)))
+                .waitSeconds(0.4)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
                     claw.setPosition(1);
                 })
-                .waitSeconds(0.5)
+                .waitSeconds(0.1)
+                .back(15)
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial+ SL_HIGH, .7);
                 })
-                .lineToSplineHeading(new Pose2d(-24, 14.2, Math.toRadians(270)))
-                .forward(1)
-                .waitSeconds(1)
-                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                    claw.setPosition(0.5);
+                .lineToSplineHeading(new Pose2d(-21, 12.2, Math.toRadians(270)))
+                .forward(2.5)
+                .waitSeconds(.4)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.2);
                 })
-                .back(1)
+                .waitSeconds(.1)
+                .back(2.5)
                 .addDisplacementMarker(() -> {
-                    slideTo(slideInitial + 500, .7);
+                    slideTo(slideInitial + 300, .7);
                 })
-                .lineToSplineHeading(new Pose2d(-55, 14.2, Math.toRadians(180)))
-                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                    claw.setPosition(1);
+                .lineToSplineHeading(new Pose2d(-54, 12.2, Math.toRadians(180)))
+                .waitSeconds(.4)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.8);
                 })
-                .waitSeconds(0.5)
-                .addDisplacementMarker(() -> {
-                    slideTo(slideInitial+ SL_HIGH, .7);
-                })
-                .lineToSplineHeading(new Pose2d(-24, 14.2, Math.toRadians(270)))
-                .forward(1)
-                .waitSeconds(1)
-                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                    claw.setPosition(0.5);
-                })
-                .back(1)
-                .addDisplacementMarker(() -> {
-                    slideTo(slideInitial + 350, .7);
-                })
-                .lineToSplineHeading(new Pose2d(-55, 14.2, Math.toRadians(180)))
-                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                    claw.setPosition(1);
-                })
-                .waitSeconds(0.5)
+                .waitSeconds(0.1)
+                .back(15)
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial+ SL_HIGH, .7);
                 })
-                .lineToSplineHeading(new Pose2d(-24, 14.2, Math.toRadians(270)))
-                .forward(1)
-                .waitSeconds(1)
-                .UNSTABLE_addTemporalMarkerOffset(0, () -> {
-                    claw.setPosition(0.5);
+                .lineToSplineHeading(new Pose2d(-21, 12.2, Math.toRadians(270)))
+                .forward(2.5)
+                .waitSeconds(0.4)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.2);
                 })
-                .back(1)
+                .waitSeconds(.100)
+                .back(2.5)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + 200, .7);
+                })
+                .lineToSplineHeading(new Pose2d(-54, 12.2, Math.toRadians(180)))
+                .waitSeconds(.4)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.8);
+                })
+                .waitSeconds(0.1)
+                .back(15)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial+ SL_HIGH, .7);
+                })
+                .lineToSplineHeading(new Pose2d(-21, 12.2, Math.toRadians(270)))
+                .forward(2.5)
+                .waitSeconds(.4)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.2);
+                })
+                .waitSeconds(.1)
+                .back(2.5)
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial + 4, .1);
                 })
@@ -285,7 +294,7 @@ public class KMS2 extends LinearOpMode
 
         }else if(tagOfInterest.id == MIDDLE){
 
-            claw.setPosition(1);
+            claw.setPosition(0.8);
             sleep(1000);
             drive.followTrajectorySequence(RightTrajectory);
 

@@ -85,9 +85,9 @@ public class KMS2 extends LinearOpMode
         slide.setTargetPosition(slideInitial);
         slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        int SL_LOW = 600;
-        int SL_MEDIUM = 1450;
-        int SL_HIGH = 2280;
+        int SL_LOW = 650;
+        int SL_MEDIUM = 1400;
+        int SL_HIGH = 2350;
 
         double strafeAdditive = 12;
 
@@ -101,82 +101,41 @@ public class KMS2 extends LinearOpMode
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial + SL_HIGH, .7);
                 })
-                .forward(49)
+                .forward(62)
+                .back(10)
                 .strafeLeft(16)
-                .forward(2.5)
+                .forward(2)
                 .waitSeconds(0.4)
                 .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                    claw.setPosition(0.2);
+                    claw.setPosition(0.5);
                 })
-                .waitSeconds(.1)
+                .waitSeconds(.25)
                 .back(2.5)
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial + 400, .7);
                 })
-                .lineToSplineHeading(new Pose2d(-54, 12.2, Math.toRadians(180)))
+                .lineToSplineHeading(new Pose2d(-52, 12.2, Math.toRadians(180)))
                 .waitSeconds(0.4)
                 .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
                     claw.setPosition(1);
                 })
-                .waitSeconds(0.1)
-                .back(15)
+                .waitSeconds(0.3)
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial+ SL_HIGH, .7);
                 })
-                .lineToSplineHeading(new Pose2d(-21, 12.2, Math.toRadians(270)))
+                .waitSeconds(0.5)
+                .back(15)
+                .lineToSplineHeading(new Pose2d(-18, 10.2, Math.toRadians(270)))
                 .forward(2.5)
                 .waitSeconds(.4)
                 .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
                     claw.setPosition(0.2);
                 })
-                .waitSeconds(.1)
+                .waitSeconds(.5)
                 .back(2.5)
                 .addDisplacementMarker(() -> {
-                    slideTo(slideInitial + 300, .7);
+                    slideTo(slideInitial + 100, .7);
                 })
-                .lineToSplineHeading(new Pose2d(-54, 12.2, Math.toRadians(180)))
-                .waitSeconds(.4)
-                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                    claw.setPosition(0.8);
-                })
-                .waitSeconds(0.1)
-                .back(15)
-                .addDisplacementMarker(() -> {
-                    slideTo(slideInitial+ SL_HIGH, .7);
-                })
-                .lineToSplineHeading(new Pose2d(-21, 12.2, Math.toRadians(270)))
-                .forward(2.5)
-                .waitSeconds(0.4)
-                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                    claw.setPosition(0.2);
-                })
-                .waitSeconds(.100)
-                .back(2.5)
-                .addDisplacementMarker(() -> {
-                    slideTo(slideInitial + 200, .7);
-                })
-                .lineToSplineHeading(new Pose2d(-54, 12.2, Math.toRadians(180)))
-                .waitSeconds(.4)
-                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                    claw.setPosition(0.8);
-                })
-                .waitSeconds(0.1)
-                .back(15)
-                .addDisplacementMarker(() -> {
-                    slideTo(slideInitial+ SL_HIGH, .7);
-                })
-                .lineToSplineHeading(new Pose2d(-21, 12.2, Math.toRadians(270)))
-                .forward(2.5)
-                .waitSeconds(.4)
-                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                    claw.setPosition(0.2);
-                })
-                .waitSeconds(.1)
-                .back(2.5)
-                .addDisplacementMarker(() -> {
-                    slideTo(slideInitial + 4, .1);
-                })
-                .strafeRight(12)
                 .build();
 
 

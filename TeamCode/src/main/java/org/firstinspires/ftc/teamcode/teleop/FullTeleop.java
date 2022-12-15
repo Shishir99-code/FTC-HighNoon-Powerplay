@@ -59,9 +59,9 @@ public class FullTeleop extends LinearOpMode {
 
         claw = hardwareMap.get(Servo.class, "claw");
 
-        int SL_LOW = 600;
-        int SL_MEDIUM = 1450;
-        int SL_HIGH = 2280;
+        int SL_LOW = 850;
+        int SL_MEDIUM = 1500;
+        int SL_HIGH = 2250;
 
         // Gamepad 2
         boolean releasedA2 = true, releasedB2 = true, releasedX2 = true, releasedY2 = true;
@@ -149,7 +149,7 @@ public class FullTeleop extends LinearOpMode {
 
             if (gamepad2.dpad_up) {
                 if (releasedDU2) {
-                    slide.setTargetPosition(slide.getCurrentPosition() + 105);
+                    slide.setTargetPosition(slide.getCurrentPosition() + 150);
                     slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     slide.setPower(0.8);
                     releasedDU2 = false;
@@ -172,7 +172,7 @@ public class FullTeleop extends LinearOpMode {
             if ((gamepad2.right_bumper)) {
                 claw.setPosition(0.8);
             } else {
-                claw.setPosition(0.2);
+                claw.setPosition(0.5);
             }
 
         }

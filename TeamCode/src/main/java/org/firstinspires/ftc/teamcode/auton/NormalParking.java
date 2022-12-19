@@ -123,16 +123,16 @@ public class NormalParking extends LinearOpMode
         drive.setPoseEstimate(startPose);
 
         TrajectorySequence parkZone1 = drive.trajectorySequenceBuilder(startPose)
-                .forward(23)
+                .forward(30)
                 .strafeLeft(24)
                 .build();
 
         TrajectorySequence parkZone2 = drive.trajectorySequenceBuilder(startPose)
-                .forward(24)
+                .forward(30)
                 .build();
 
         TrajectorySequence parkZone3 = drive.trajectorySequenceBuilder(startPose)
-                .forward(22)
+                .forward(30)
                 .strafeRight(22)
                 .build();
 

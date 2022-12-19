@@ -12,80 +12,42 @@ public class MeepMeepTesting {
 
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(45.9, 35.9, Math.toRadians(140), Math.toRadians(140), 14.01)
+                .setConstraints(38, 30, Math.toRadians(140), Math.toRadians(140), 14.01)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-36, 61.2, Math.toRadians(270)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-34, 61.2, Math.toRadians(270)))
                                 .addDisplacementMarker(() -> {
                                     //slideTo(slideInitial + SL_HIGH, .7);
                                 })
-                                .forward(51.5)
-                                .strafeLeft(13)
-                                .waitSeconds(0.4)
+                                .lineToSplineHeading(new Pose2d(-34,12.2, Math.toRadians(270)))
+                                .strafeLeft(10.7)
+                                .forward(1)
+                                .waitSeconds(0.3)
                                 .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                                    //claw.setPosition(0.2);
+                                    //claw.setPosition(0.5);
                                 })
-                                .waitSeconds(.25)
-                                .back(3.5)
+                                .waitSeconds(.2)
+                                .back(3)
                                 .addDisplacementMarker(() -> {
                                     //slideTo(slideInitial + 400, .7);
                                 })
-                                .lineToSplineHeading(new Pose2d(-54, 12.2, Math.toRadians(180)))
-                                .waitSeconds(0.4)
-                                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                                    //claw.setPosition(0.8);
-                                })
-                                .waitSeconds(0.1)
-                                .back(18)
-                                .addDisplacementMarker(() -> {
-                                    //slideTo(slideInitial+ SL_HIGH, .7);
-                                })
-                                .lineToSplineHeading(new Pose2d(-31, 7.2, Math.toRadians(315)))
-                                .waitSeconds(0.4)
+                                .lineToSplineHeading(new Pose2d(-53,11.7, Math.toRadians(180)))
+                                .waitSeconds(0.3)
                                 .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
                                     //claw.setPosition(0.5);
                                 })
-                                .waitSeconds(.25)
-                                .lineToSplineHeading(new Pose2d(-35, 12.2, Math.toRadians(180)))
+                                .waitSeconds(.2)
                                 .addDisplacementMarker(() -> {
-                                    //slideTo(slideInitial + 250, .7);
+                                    //slideTo(slideInitial + SL_HIGH, .7);
                                 })
-                                .lineToSplineHeading(new Pose2d(-54, 12.2, Math.toRadians(180)))
-                                .waitSeconds(0.4)
-                                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                                    //claw.setPosition(0.8);
-                                })
-                                .waitSeconds(0.1)
-                                .back(15)
-                                .addDisplacementMarker(() -> {
-                                    //slideTo(slideInitial+ SL_HIGH, .7);
-                                })
-                                .lineToSplineHeading(new Pose2d(-31, 7.2, Math.toRadians(315)))
-                                .waitSeconds(0.4)
+                                .back(13)
+                                .lineToSplineHeading(new Pose2d(-23,12.2, Math.toRadians(270)))
+                                .forward(1)
+                                .waitSeconds(0.3)
                                 .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
                                     //claw.setPosition(0.5);
                                 })
-                                .waitSeconds(.25)
-                                .lineToSplineHeading(new Pose2d(-35, 12.2, Math.toRadians(180)))
-                                .addDisplacementMarker(() -> {
-                                    //slideTo(slideInitial + 250, .7);
-                                })
-                                .lineToSplineHeading(new Pose2d(-54, 12.2, Math.toRadians(180)))
-                                .waitSeconds(0.4)
-                                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                                    //claw.setPosition(0.8);
-                                })
-                                .waitSeconds(0.1)
-                                .back(15)
-                                .addDisplacementMarker(() -> {
-                                    //slideTo(slideInitial+ SL_HIGH, .7);
-                                })
-                                .lineToSplineHeading(new Pose2d(-31, 7.2, Math.toRadians(315)))
-                                .waitSeconds(0.4)
-                                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                                    //claw.setPosition(0.5);
-                                })
-                                .waitSeconds(.25)
-                                .lineToSplineHeading(new Pose2d(-35, 12.2, Math.toRadians(180)))
+                                .waitSeconds(.2)
+                                .back(3)
                                 .build()
                 );
 

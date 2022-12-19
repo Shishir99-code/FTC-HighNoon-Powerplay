@@ -34,21 +34,25 @@ public class FullTeleop extends LinearOpMode {
         leftBack = hardwareMap.get(DcMotor.class, "leftBack");
         leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftBack.setDirection(DcMotor.Direction.FORWARD);
+        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // left front motor
         leftFront = hardwareMap.get(DcMotor.class, "leftFront");
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftFront.setDirection(DcMotor.Direction.FORWARD);
+        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // right back motor
         rightBack = hardwareMap.get(DcMotor.class, "rightBack");
         rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightBack.setDirection(DcMotor.Direction.REVERSE);
+        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // right front motor
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
         rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightFront.setDirection(DcMotor.Direction.REVERSE);
+        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         slide = hardwareMap.get(DcMotor.class, "slide");
         slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -59,9 +63,9 @@ public class FullTeleop extends LinearOpMode {
 
         claw = hardwareMap.get(Servo.class, "claw");
 
-        int SL_LOW = 850;
-        int SL_MEDIUM = 1500;
-        int SL_HIGH = 2250;
+        int SL_LOW = 1025;
+        int SL_MEDIUM = 1575;
+        int SL_HIGH = 2175;
 
         // Gamepad 2
         boolean releasedA2 = true, releasedB2 = true, releasedX2 = true, releasedY2 = true;
@@ -96,7 +100,7 @@ public class FullTeleop extends LinearOpMode {
                 leftFront.setPower(-1);
                 rightBack.setPower(-1);
             }
-            else if ((gamepad1.left_bumper)) {
+            if ((gamepad1.left_bumper)) {
                 rightFront.setPower(-1);
                 leftBack.setPower(-1);
                 leftFront.setPower(1);
@@ -174,6 +178,8 @@ public class FullTeleop extends LinearOpMode {
             } else {
                 claw.setPosition(0.5);
             }
+
+            telemetry.addData("Counts:", "BL=%d FL=%d BR=%d FR=%d", leftBack.getCurrentPosition(), leftFront.getCurrentPosition(), rightBack.getCurrentPosition(), rightFront.getCurrentPosition());
 
         }
 

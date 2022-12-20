@@ -34,25 +34,22 @@ public class FullTeleop extends LinearOpMode {
         leftBack = hardwareMap.get(DcMotor.class, "leftBack");
         leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftBack.setDirection(DcMotor.Direction.FORWARD);
-        leftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         // left front motor
         leftFront = hardwareMap.get(DcMotor.class, "leftFront");
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftFront.setDirection(DcMotor.Direction.FORWARD);
-        leftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // right back motor
         rightBack = hardwareMap.get(DcMotor.class, "rightBack");
         rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightBack.setDirection(DcMotor.Direction.REVERSE);
-        rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // right front motor
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
         rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightFront.setDirection(DcMotor.Direction.REVERSE);
-        rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         slide = hardwareMap.get(DcMotor.class, "slide");
         slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

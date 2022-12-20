@@ -26,6 +26,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -97,40 +98,206 @@ public class KMS2 extends LinearOpMode
 
         drive.setPoseEstimate(startPose);
 
-        TrajectorySequence RightTrajectory = drive.trajectorySequenceBuilder(startPose)
+        TrajectorySequence RightTrajectory2 = drive.trajectorySequenceBuilder(startPose)
                 .addDisplacementMarker(() -> {
-                    //slideTo(slideInitial + SL_HIGH, .7);
+                    slideTo(slideInitial + SL_HIGH, .7);
                 })
-                .lineToSplineHeading(new Pose2d(-34,12.2, Math.toRadians(270)))
-                .strafeLeft(10.7)
-                .forward(1)
-                .waitSeconds(0.3)
+                .lineToSplineHeading(new Pose2d(-34,-2, Math.toRadians(270)),
+                        SampleMecanumDrive.getVelocityConstraint(50, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        SampleMecanumDrive.getAccelerationConstraint(40))
+                .lineToSplineHeading(new Pose2d(-34,1.2, Math.toRadians(270)),
+                        SampleMecanumDrive.getVelocityConstraint(50, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        SampleMecanumDrive.getAccelerationConstraint(40))
+                .strafeLeft(18)
+                .waitSeconds(0.1)
                 .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                    //claw.setPosition(0.5);
+                    claw.setPosition(0.5);
                 })
                 .waitSeconds(.2)
                 .back(3)
                 .addDisplacementMarker(() -> {
-                    //slideTo(slideInitial + 400, .7);
+                    slideTo(slideInitial + 350, .8);//power was 0.7
                 })
-                .lineToSplineHeading(new Pose2d(-53,11.7, Math.toRadians(180)))
-                .waitSeconds(0.3)
-                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                    //claw.setPosition(0.5);
+                .lineToSplineHeading(new Pose2d(-56,3.7, Math.toRadians(180)))
+                .waitSeconds(0.2)
+                .UNSTABLE_addTemporalMarkerOffset(0.1, () -> {
+                    claw.setPosition(1);
                 })
                 .waitSeconds(.2)
                 .addDisplacementMarker(() -> {
-                    //slideTo(slideInitial + SL_HIGH, .7);
+                    slideTo(slideInitial + SL_HIGH, .7);
                 })
+                .waitSeconds(.1)
                 .back(13)
-                .lineToSplineHeading(new Pose2d(-23,12.2, Math.toRadians(270)))
-                .forward(1)
-                .waitSeconds(0.3)
+                .lineToSplineHeading(new Pose2d(-16.5,0.2, Math.toRadians(270)))
+                .waitSeconds(0.2)
                 .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
-                    //claw.setPosition(0.5);
+                    claw.setPosition(0.5);
+
                 })
                 .waitSeconds(.2)
                 .back(3)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + 250, .8);
+                })
+                .lineToSplineHeading(new Pose2d(-56,2.5 , Math.toRadians(180)))
+                .waitSeconds(0.3)
+                .UNSTABLE_addTemporalMarkerOffset(0.1, () -> {
+                    claw.setPosition(1);
+                })
+                .waitSeconds(.3)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + SL_HIGH, .8);
+                })
+                .waitSeconds(.1)
+                .back(13)
+                .lineToSplineHeading(new Pose2d(-16.5,-2, Math.toRadians(270)))
+                .waitSeconds(0.2)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.5);
+
+                })
+                .waitSeconds(.1)
+                .back(2)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + 4, .8);
+                })
+                .strafeRight(18)
+                .build();
+
+        TrajectorySequence RightTrajectory1 = drive.trajectorySequenceBuilder(startPose)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + SL_HIGH, .7);
+                })
+                .lineToSplineHeading(new Pose2d(-34,-2, Math.toRadians(270)),
+                        SampleMecanumDrive.getVelocityConstraint(50, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        SampleMecanumDrive.getAccelerationConstraint(40))
+                .lineToSplineHeading(new Pose2d(-34,1.2, Math.toRadians(270)),
+                        SampleMecanumDrive.getVelocityConstraint(50, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        SampleMecanumDrive.getAccelerationConstraint(40))
+                .strafeLeft(18)
+                .waitSeconds(0.1)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.5);
+                })
+                .waitSeconds(.2)
+                .back(3)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + 350, .8);//power was 0.7
+                })
+                .lineToSplineHeading(new Pose2d(-56,3.7, Math.toRadians(180)))
+                .waitSeconds(0.2)
+                .UNSTABLE_addTemporalMarkerOffset(0.1, () -> {
+                    claw.setPosition(1);
+                })
+                .waitSeconds(.2)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + SL_HIGH, .7);
+                })
+                .waitSeconds(.1)
+                .back(13)
+                .lineToSplineHeading(new Pose2d(-16.5,0.2, Math.toRadians(270)))
+                .waitSeconds(0.2)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.5);
+
+                })
+                .waitSeconds(.2)
+                .back(3)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + 250, .8);
+                })
+                .lineToSplineHeading(new Pose2d(-56,2.5 , Math.toRadians(180)))
+                .waitSeconds(0.3)
+                .UNSTABLE_addTemporalMarkerOffset(0.1, () -> {
+                    claw.setPosition(1);
+                })
+                .waitSeconds(.3)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + SL_HIGH, .8);
+                })
+                .waitSeconds(.1)
+                .back(13)
+                .lineToSplineHeading(new Pose2d(-16.5,-2, Math.toRadians(270)))
+                .waitSeconds(0.2)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.5);
+
+                })
+                .waitSeconds(.1)
+                .back(2)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + 4, .8);
+                })
+                .strafeLeft(18)
+                .build();
+
+        TrajectorySequence RightTrajectory3 = drive.trajectorySequenceBuilder(startPose)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + SL_HIGH, .7);
+                })
+                .lineToSplineHeading(new Pose2d(-34,-2, Math.toRadians(270)),
+                        SampleMecanumDrive.getVelocityConstraint(50, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        SampleMecanumDrive.getAccelerationConstraint(40))
+                .lineToSplineHeading(new Pose2d(-34,1.2, Math.toRadians(270)),
+                        SampleMecanumDrive.getVelocityConstraint(50, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        SampleMecanumDrive.getAccelerationConstraint(40))
+                .strafeLeft(18)
+                .waitSeconds(0.1)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.5);
+                })
+                .waitSeconds(.2)
+                .back(3)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + 350, .8);//power was 0.7
+                })
+                .lineToSplineHeading(new Pose2d(-56,3.7, Math.toRadians(180)))
+                .waitSeconds(0.2)
+                .UNSTABLE_addTemporalMarkerOffset(0.1, () -> {
+                    claw.setPosition(1);
+                })
+                .waitSeconds(.2)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + SL_HIGH, .7);
+                })
+                .waitSeconds(.1)
+                .back(13)
+                .lineToSplineHeading(new Pose2d(-16.5,0.2, Math.toRadians(270)))
+                .waitSeconds(0.2)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.5);
+
+                })
+                .waitSeconds(.2)
+                .back(3)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + 250, .8);
+                })
+                .lineToSplineHeading(new Pose2d(-56,2.5 , Math.toRadians(180)))
+                .waitSeconds(0.3)
+                .UNSTABLE_addTemporalMarkerOffset(0.1, () -> {
+                    claw.setPosition(1);
+                })
+                .waitSeconds(.3)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + SL_HIGH, .8);
+                })
+                .waitSeconds(.1)
+                .back(13)
+                .lineToSplineHeading(new Pose2d(-16.5,-2, Math.toRadians(270)))
+                .waitSeconds(0.2)
+                .UNSTABLE_addTemporalMarkerOffset(0.2, () -> {
+                    claw.setPosition(0.5);
+
+                })
+                .waitSeconds(.1)
+                .back(2)
+                .addDisplacementMarker(() -> {
+                    slideTo(slideInitial + 4, .8);
+                })
+                .strafeRight(36, SampleMecanumDrive.getVelocityConstraint(60, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
+                        SampleMecanumDrive.getAccelerationConstraint(50))
                 .build();
 
 
@@ -244,18 +411,21 @@ public class KMS2 extends LinearOpMode
         /* Actually do something useful */
         if(tagOfInterest == null || tagOfInterest.id == LEFT){
 
-
+            claw.setPosition(0.8);
+            sleep(1000);
+            drive.followTrajectorySequence(RightTrajectory1);
 
         }else if(tagOfInterest.id == MIDDLE){
 
             claw.setPosition(0.8);
             sleep(1000);
-            drive.followTrajectorySequence(RightTrajectory);
-            sleep(100);
-            slideTo(slideInitial+ 4, 0.7);
+            drive.followTrajectorySequence(RightTrajectory2);
 
         }else if (tagOfInterest.id == RIGHT){
 
+            claw.setPosition(0.8);
+            sleep(1000);
+            drive.followTrajectorySequence(RightTrajectory3);
 
         }
 

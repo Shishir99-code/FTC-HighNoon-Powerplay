@@ -91,18 +91,6 @@ public class FullTeleop extends LinearOpMode {
             rightFront.setPower(frontRightPower * 0.7);
             rightBack.setPower(backRightPower * 0.7);
 
-            if ((gamepad1.right_bumper)) {
-                rightFront.setPower(1);
-                leftBack.setPower(1);
-                leftFront.setPower(-1);
-                rightBack.setPower(-1);
-            }
-            if ((gamepad1.left_bumper)) {
-                rightFront.setPower(-1);
-                leftBack.setPower(-1);
-                leftFront.setPower(1);
-                rightBack.setPower(1);
-            }
 
             if (gamepad2.a) {
                 if (releasedA2) {

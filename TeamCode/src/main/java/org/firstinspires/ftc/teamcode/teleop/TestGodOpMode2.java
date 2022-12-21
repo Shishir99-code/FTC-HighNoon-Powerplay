@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.drive.advanced.SampleMecanumDriveCancelable;
 
 @TeleOp(group = "advanced")
-public class TestGodOpMode extends LinearOpMode {
+public class TestGodOpMode2 extends LinearOpMode {
 
     DcMotor leftBack;
     DcMotor leftF;
@@ -27,11 +27,11 @@ public class TestGodOpMode extends LinearOpMode {
 
     Mode currentMode = Mode.DRIVER_CONTROL;
 
+    Pose2d targetAVector = new Pose2d(-16, 34, Math.toRadians(0));
+
     double targetAngle = Math.toRadians(0);
 
-    Pose2d startPose = new Pose2d(0,0,Math.toRadians(0));
-
-    Pose2d endPose = new Pose2d(0,0,Math.toRadians(0));
+    Pose2d startPose = new Pose2d(-16,60,Math.toRadians(0));
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -124,35 +124,23 @@ public class TestGodOpMode extends LinearOpMode {
                     rightBack.setPower(backRightPower * 0.6);
 
                     if (gamepad1.a) {
-                        // Using gamepad A sets start position
+                        // If the A button is pressed on gamepad1, we generate a splineTo()
+                        // trajectory on the fly and follow it
+                        // We switch the state to AUTOMATIC_CONTROL
 
-                        startPose = new Pose2d(poseEstimate.getX(), poseEstimate.getY(), poseEstimate.getHeading());
-                        currentMode = Mode.DRIVER_CONTROL;
-                    }
-
-                    else if (gamepad1.b) {
-
-                        endPose = new Pose2d(poseEstimate.getX(), poseEstimate.getY(), poseEstimate.getHeading());
-                        currentMode = Mode.DRIVER_CONTROL;
-
-                    }
-
-                    else if (gamepad1.right_bumper) {
-
-                        Trajectory plsWork = drive.trajectoryBuilder(startPose)
-                                .lineToSplineHeading(endPose)
+                        Trajectory traj1 = drive.trajectoryBuilder(poseEstimate)
+                                .lineToSplineHeading(targetAVector)
                                 .build();
 
-                        drive.followTrajectoryAsync(plsWork);
+                        drive.followTrajectoryAsync(traj1);
+
                         currentMode = Mode.AUTOMATIC_CONTROL;
-
-                    }
-
-                    else if (gamepad1.y) {
+                    } else if (gamepad1.y) {
                         // If Y is pressed, we turn the bot to the specified angle to reach
                         // targetAngle (by default, 45 degrees)
 
                         drive.turnAsync(Angle.normDelta(targetAngle - poseEstimate.getHeading()));
+
                         currentMode = Mode.AUTOMATIC_CONTROL;
                     }
 
@@ -244,6 +232,5 @@ public class TestGodOpMode extends LinearOpMode {
             }
         }
     }
-
-
 }
+

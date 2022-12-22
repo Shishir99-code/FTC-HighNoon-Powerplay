@@ -29,9 +29,9 @@ public class TestGodOpMode extends LinearOpMode {
 
     double targetAngle = Math.toRadians(0);
 
-    Pose2d startPose = new Pose2d(0,0,Math.toRadians(0));
+    Pose2d startPose = null;
 
-    Pose2d endPose = new Pose2d(0,0,Math.toRadians(0));
+    Pose2d endPose = null;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -126,21 +126,32 @@ public class TestGodOpMode extends LinearOpMode {
                     if (gamepad1.a) {
                         // Using gamepad A sets start position
 
-                        startPose = new Pose2d(poseEstimate.getX(), poseEstimate.getY(), poseEstimate.getHeading());
+                        startPose = drive.getPoseEstimate();
                         currentMode = Mode.DRIVER_CONTROL;
                     }
 
                     else if (gamepad1.b) {
 
-                        endPose = new Pose2d(poseEstimate.getX(), poseEstimate.getY(), poseEstimate.getHeading());
+                        //Use gamepad b to set the end point of the trajectory
+
+                        endPose = drive.getPoseEstimate();
                         currentMode = Mode.DRIVER_CONTROL;
 
                     }
 
-                    else if (gamepad1.right_bumper) {
+                    else if (gamepad1.right_bumper && endPose != null && startPose != null) {
 
                         Trajectory plsWork = drive.trajectoryBuilder(startPose)
                                 .lineToSplineHeading(endPose)
+                                .build();
+
+                        drive.followTrajectoryAsync(plsWork);
+                        currentMode = Mode.AUTOMATIC_CONTROL;
+
+                    } else if (gamepad1.left_bumper && endPose != null && startPose != null) {
+
+                        Trajectory plsWork = drive.trajectoryBuilder(endPose)
+                                .lineToSplineHeading(startPose)
                                 .build();
 
                         drive.followTrajectoryAsync(plsWork);

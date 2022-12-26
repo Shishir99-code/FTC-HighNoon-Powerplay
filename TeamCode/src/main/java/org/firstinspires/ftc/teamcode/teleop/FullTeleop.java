@@ -96,7 +96,7 @@ public class FullTeleop extends LinearOpMode {
                 if (releasedA2) {
                     slide.setTargetPosition(slideInitial);
                     slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    slide.setPower(0.8);
+                    slide.setPower(1);
                     releasedA2 = false;
                 }
             } else if (!releasedA2) {
@@ -107,7 +107,7 @@ public class FullTeleop extends LinearOpMode {
                 if (releasedB2) {
                     slide.setTargetPosition(slideInitial + SL_LOW);
                     slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    slide.setPower(-0.8);
+                    slide.setPower(-1);
                     releasedB2 = false;
                 }
             } else if (!releasedB2) {
@@ -118,7 +118,7 @@ public class FullTeleop extends LinearOpMode {
                 if (releasedX2) {
                     slide.setTargetPosition(slideInitial + SL_MEDIUM);
                     slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    slide.setPower(0.8);
+                    slide.setPower(1);
                     releasedX2 = false;
                 }
             } else if (!releasedX2) {
@@ -129,7 +129,7 @@ public class FullTeleop extends LinearOpMode {
                 if (releasedY2) {
                     slide.setTargetPosition(slideInitial + SL_HIGH);
                     slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    slide.setPower(0.8);
+                    slide.setPower(1);
                     releasedY2 = false;
                 }
             } else if (!releasedY2) {
@@ -140,7 +140,7 @@ public class FullTeleop extends LinearOpMode {
                 if (releasedDU2) {
                     slide.setTargetPosition(slide.getCurrentPosition() + 150);
                     slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    slide.setPower(0.8);
+                    slide.setPower(1);
                     releasedDU2 = false;
                 }
             } else if (!releasedDU2) {
@@ -151,7 +151,7 @@ public class FullTeleop extends LinearOpMode {
                 if (releasedDD2) {
                     slide.setTargetPosition(slide.getCurrentPosition() - 105);
                     slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    slide.setPower(0.8);
+                    slide.setPower(1);
                     releasedDD2 = false;
                 }
             } else if (!releasedDD2) {

@@ -8,6 +8,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+
+import org.firstinspires.ftc.teamcode.drive.advanced.PoseStorage;
 import org.firstinspires.ftc.teamcode.drive.advanced.SampleMecanumDriveCancelable;
 
 @TeleOp(group = "advanced")
@@ -44,7 +46,9 @@ public class TestGodOpMode extends LinearOpMode {
 
         // Retrieve our pose from the PoseStorage.currentPose static field
         // See AutoTransferPose.java for further details
-        drive.setPoseEstimate(startPose);
+        drive.setPoseEstimate(PoseStorage.currentPose);
+
+        if (gamepad1.dpad_right)
 
         leftBack = hardwareMap.get(DcMotor.class, "leftBack");
         leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -118,10 +122,10 @@ public class TestGodOpMode extends LinearOpMode {
                     double frontRightPower = (y - x - rx) / denominator;
                     double backRightPower = (y + x - rx) / denominator;
 
-                    leftF.setPower(frontLeftPower * 0.6);
-                    leftBack.setPower(backLeftPower * 0.6);
-                    rightF.setPower(frontRightPower * 0.6);
-                    rightBack.setPower(backRightPower * 0.6);
+                    leftF.setPower(frontLeftPower * 0.7);
+                    leftBack.setPower(backLeftPower * 0.7);
+                    rightF.setPower(frontRightPower * 0.7);
+                    rightBack.setPower(backRightPower * 0.7);
 
                     if (gamepad1.a) {
                         // Using gamepad A sets start position
@@ -171,7 +175,7 @@ public class TestGodOpMode extends LinearOpMode {
                         if (releasedA2) {
                             slide.setTargetPosition(slideInitial);
                             slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                            slide.setPower(0.8);
+                            slide.setPower(1);
                             releasedA2 = false;
                         }
                     } else if (!releasedA2) {
@@ -182,7 +186,7 @@ public class TestGodOpMode extends LinearOpMode {
                         if (releasedB2) {
                             slide.setTargetPosition(slideInitial + SL_LOW);
                             slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                            slide.setPower(-0.8);
+                            slide.setPower(-1);
                             releasedB2 = false;
                         }
                     } else if (!releasedB2) {
@@ -193,7 +197,7 @@ public class TestGodOpMode extends LinearOpMode {
                         if (releasedX2) {
                             slide.setTargetPosition(slideInitial + SL_MEDIUM);
                             slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                            slide.setPower(0.8);
+                            slide.setPower(1);
                             releasedX2 = false;
                         }
                     } else if (!releasedX2) {
@@ -204,7 +208,7 @@ public class TestGodOpMode extends LinearOpMode {
                         if (releasedY2) {
                             slide.setTargetPosition(slideInitial + SL_HIGH);
                             slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                            slide.setPower(0.8);
+                            slide.setPower(1);
                             releasedY2 = false;
                         }
                     } else if (!releasedY2) {
@@ -215,7 +219,7 @@ public class TestGodOpMode extends LinearOpMode {
                         if (releasedDU2) {
                             slide.setTargetPosition(slide.getCurrentPosition() + 150);
                             slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                            slide.setPower(0.8);
+                            slide.setPower(1);
                             releasedDU2 = false;
                         }
                     } else if (!releasedDU2) {
@@ -226,7 +230,7 @@ public class TestGodOpMode extends LinearOpMode {
                         if (releasedDD2) {
                             slide.setTargetPosition(slide.getCurrentPosition() - 105);
                             slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                            slide.setPower(0.8);
+                            slide.setPower(1);
                             releasedDD2 = false;
                         }
                     } else if (!releasedDD2) {

@@ -112,13 +112,11 @@ public class KMS2 extends LinearOpMode
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial + 350, .9);//power was 0.7
                 })
-                .waitSeconds(.1)
                 .lineToSplineHeading(new Pose2d(-56,3.7, Math.toRadians(180)))
                 .addTemporalMarker(() -> claw.setPosition(1))
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial + SL_HIGH, .9);
                 })
-                .waitSeconds(.1)
                 .back(13,
                         SampleMecanumDrive.getVelocityConstraint(60, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
                         SampleMecanumDrive.getAccelerationConstraint(50))
@@ -127,13 +125,11 @@ public class KMS2 extends LinearOpMode
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial + 250, .9);
                 })
-                .waitSeconds(.1)
                 .lineToSplineHeading(new Pose2d(-56,1.5 , Math.toRadians(180)))
                 .addTemporalMarker(() -> claw.setPosition(1))
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial + SL_HIGH, .8);
                 })
-                .waitSeconds(.1)
                 .back(13,
                         SampleMecanumDrive.getVelocityConstraint(60, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
                         SampleMecanumDrive.getAccelerationConstraint(50))
@@ -142,13 +138,11 @@ public class KMS2 extends LinearOpMode
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial + 350, .9);//power was 0.7
                 })
-                .waitSeconds(.1)
                 .lineToSplineHeading(new Pose2d(-56,1.5, Math.toRadians(180)))
                 .addTemporalMarker(() -> claw.setPosition(1))
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial + SL_HIGH, .9);
                 })
-                .waitSeconds(.1)
                 .back(13,
                         SampleMecanumDrive.getVelocityConstraint(60, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH),
                         SampleMecanumDrive.getAccelerationConstraint(50))
@@ -157,7 +151,6 @@ public class KMS2 extends LinearOpMode
                 .addDisplacementMarker(() -> {
                     slideTo(slideInitial + 1, .9);
                 })
-                .waitSeconds(0.1)
                 .strafeRight(16)
                 .build();
 

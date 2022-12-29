@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.OpticalDistanceSensor;
 
 @TeleOp
 
@@ -19,6 +20,7 @@ public class FullTeleop extends LinearOpMode {
     DcMotor rightFront;
     Servo claw;
     DcMotor slide;
+    OpticalDistanceSensor odsSensor;
 
 
     final double SLIDE_TICKS_PER_REV = 384.5;
@@ -60,6 +62,8 @@ public class FullTeleop extends LinearOpMode {
 
         claw = hardwareMap.get(Servo.class, "claw");
 
+        odsSensor = hardwareMap.get(OpticalDistanceSensor.class, "sensor_ods");
+
         int SL_LOW = 1025;
         int SL_MEDIUM = 1575;
         int SL_HIGH = 2175;
@@ -90,6 +94,9 @@ public class FullTeleop extends LinearOpMode {
             leftBack.setPower(backLeftPower * 0.7);
             rightFront.setPower(frontRightPower * 0.7);
             rightBack.setPower(backRightPower * 0.7);
+
+            double MIN_DISTANCE = 5;
+            double MAX_DISTANCE = 10;
 
 
             if (gamepad2.a) {
@@ -164,7 +171,13 @@ public class FullTeleop extends LinearOpMode {
                 claw.setPosition(0.5);
             }
 
-            telemetry.addData("Counts:", "BL=%d FL=%d BR=%d FR=%d", leftBack.getCurrentPosition(), leftFront.getCurrentPosition(), rightBack.getCurrentPosition(), rightFront.getCurrentPosition());
+            if (odsSensor.getRawLightDetected() >= MIN_DISTANCE && odsSensor.getRawLightDetected() <= MAX_DISTANCE) {
+                telemetry.addLine("Good to go");
+            } else if (odsSensor.getRawLightDetected() <= MIN_DISTANCE) {
+                telemetry.addLine("Move Forward!");
+            } else if (odsSensor.getRawLightDetected() >= MAX_DISTANCE) {
+                telemetry.addLine("Move Backward");
+            }
 
         }
 
